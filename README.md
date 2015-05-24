@@ -24,13 +24,14 @@ Schizo.Repo.insert(user);
 
 * update a user
 ```
-thisUser = Schizo.Repo.get(Schizo.User,:id)
+thisUser = Schizo.Repo.get(Schizo.User,1)
 thisUserNameUpdated = %{ thisUser | first_name: "Updated Name Senthil"}
 Schizo.Repo.update(thisUserNameUpdated)
 ```
 
 * add a new comment and associate it to a use
 ```
+senthil = Schizo.Repo.get(Schizo.User,1)
 comment = %Comment{ message: "Message 1 by senthil---"}
 comment  = Ecto.Changeset.change(comment, user_id: senthil.id);
 Schizo.Repo.insert(comment);
